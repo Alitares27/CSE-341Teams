@@ -9,9 +9,7 @@ router.get("/", playersController.getAll);
 router.get("/:id", playersController.getSingle);
 
 router.post("/", validation.savePlayer, playersController.createPlayer);
-
 router.put("/:id", validation.savePlayer, playersController.updatePlayer);
-
 router.delete("/:id", playersController.deletePlayer);
 
 module.exports = router;

@@ -7,24 +7,31 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:8000",
+  "host": "localhost:8083",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
-    "/api-docs": {
+    "/": {
       "get": {
+        "tags": [
+          "Hello World!"
+        ],
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
-    "/players/": {
+    "/players": {
       "get": {
+        "tags": [
+          "Players"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -32,9 +39,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       },
@@ -93,6 +97,9 @@
     },
     "/players/{id}": {
       "get": {
+        "tags": [
+          "Players"
+        ],
         "description": "",
         "produces": [
           "application/json"
