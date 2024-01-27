@@ -10,8 +10,7 @@
   "host": "localhost:8083",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -27,7 +26,7 @@
         }
       }
     },
-    "/players": {
+    "/players/": {
       "get": {
         "tags": [
           "Players"
