@@ -7,10 +7,10 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:8081",
+  "host": "teams-4o2a.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -29,7 +29,7 @@
     "/players/": {
       "get": {
         "tags": [
-          "Players"
+
         ],
         "description": "",
         "produces": [
@@ -97,7 +97,7 @@
     "/players/{id}": {
       "get": {
         "tags": [
-          "Players"
+
         ],
         "description": "",
         "produces": [

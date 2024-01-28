@@ -40,7 +40,7 @@ const createPlayer = async (req, res) => {
   };
 
   const response = await mongodb.getDatabase().db().collection("player").insertOne(player);
-  if (response.acknowledge >=0) {
+  if (response.acknowledge) {
     res.status(201).json(response);
   } else {
     res
