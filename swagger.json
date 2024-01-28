@@ -7,7 +7,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:8083",
+  "host": "localhost:8081",
   "basePath": "/",
   "schemes": [
     "http"
