@@ -1,10 +1,11 @@
 const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
-const getAll = async (req, res) => {
+const getAll =  (req, res) => {
   //#swagger.tags=['Players']
-  const result = await mongodb.getDatabase().db().collection("player").find();
+  const result =  mongodb.getDatabase().db().collection("player").find()
   result.toArray().then((player) => {
+    
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(player);
   });
@@ -39,7 +40,7 @@ const createPlayer = async (req, res) => {
   };
 
   const response = await mongodb.getDatabase().db().collection("player").insertOne(player);
-  if (response.acknowledge) {
+  if (response.acknowledge >=0) {
     res.status(201).json(response);
   } else {
     res
@@ -65,9 +66,7 @@ const updatePlayer = async (req, res) => {
     position: req.body.position,
   };
 
-  const response = await mongodb.getDatabase().db().collection("player").replaceOne({
-    _id: playerId
-  }, player);
+  const response = await mongodb.getDatabase().db().collection("player").replaceOne({_id: playerId}, player);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -86,10 +85,8 @@ const deletePlayer = async (req, res) => {
     res.status(400).json('Must use a valid contact id to delete a player.');
   }
   const playerId = new ObjectId(req.params.id);
-  const response = await mongodb.getDatabase().db().collection("player").remove({
-    _id: playerId,
-  });
-  if (response.deleteCount > 0) {
+  const response = await mongodb.getDatabase().db().collection("player").deleteOne({_id: playerId}, true);
+  if (response.deleteCount >= 0) {
     res.status(204).send();
   } else {
     res
