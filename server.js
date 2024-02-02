@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
 const app = express();
 const passport = require('passport');
-const session = require('express-session');
+const session = require('cookie-session');
 const githubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
 
@@ -67,9 +67,9 @@ app.get('/github/callback', passport.authenticate('github', {
 
   });
 
-process.on('uncaughtException', (err, origin) => {
-  console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-});
+//process.on('uncaughtException', (err, origin) => {
+ // console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+//});
 
 mongodb.initDatabase((err) => {
   if (err) {
