@@ -1,6 +1,7 @@
 const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
+//getAll
 const getAll =  (req, res) => {
   //#swagger.tags=['Players']
   const result =  mongodb.getDatabase().db().collection("player").find()
@@ -11,6 +12,7 @@ const getAll =  (req, res) => {
   });
 };
 
+//getSingle
 const getSingle = (req, res) => {
   //#swagger.tags=['Players']
   if (!ObjectId.isValid(req.params.id)) {
@@ -26,6 +28,7 @@ const getSingle = (req, res) => {
   });
 };
 
+//createPlayer
 const createPlayer = async (req, res) => {
   //#swagger.tags=['players']
   const player = {
@@ -49,10 +52,11 @@ const createPlayer = async (req, res) => {
   }
 };
 
+//updatePlayer
 const updatePlayer = async (req, res) => {
   //#swagger.tags=['players']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid contact id to update a player.');
+    res.status(400).json('Must use a valid player id to update a player.');
   }
   const playerId = new ObjectId(req.params.id);
   const player = {
@@ -79,14 +83,15 @@ const updatePlayer = async (req, res) => {
   }
 };
 
+//deletePlayer
 const deletePlayer = async (req, res) => {
   //#swagger.tags=['players']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid contact id to delete a player.');
+    res.status(400).json('Must use a valid player id to delete a player.');
   }
   const playerId = new ObjectId(req.params.id);
   const response = await mongodb.getDatabase().db().collection("player").deleteOne({_id: playerId}, true);
-  if (response.deleteCount >= 0) {
+  if (response.deleteCount > 0) {
     res.status(204).send();
   } else {
     res
