@@ -13,9 +13,7 @@
     "https"
   ],
   "paths": {
-
-
-    "/players/": {
+  "/players/": {
       "get": {
         "tags": [
           "Players"
