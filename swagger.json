@@ -10,7 +10,6 @@
   "host": "teams-4o2a.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
