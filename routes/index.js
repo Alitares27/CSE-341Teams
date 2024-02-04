@@ -1,12 +1,9 @@
-const passport = require('passport');
 const router = require('express').Router();
-router.use('/', require('./swagger'));
-//router.get('/',(req,res) => {
-//#swagger.tags=['Hello World!'];
-//res.send('Hello World!');});
 
+const passport = require('passport');
+router.use('/', require('./swagger'));
 router.use('/players', require('./players'));
-router.use('/coachs', require('./coachs'))
+router.use('/coachs', require('./coachs'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
