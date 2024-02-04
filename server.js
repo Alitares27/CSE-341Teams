@@ -15,7 +15,7 @@ app
   .use(bodyParser.json())
   .use(
     session({
-      secret: "Secret",
+      secret: "PlayersList",
       resave: false,
       saveUninitialized: true,
     })
